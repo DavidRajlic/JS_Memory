@@ -1,19 +1,31 @@
+:root {
+  --favColor: blue;
+}
+
 .header{
   display: flex;
   justify-content: center;
 }
+
 .position{
   display: grid;
-  grid-template-columns:auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 1em;
+  width: 500px;
+  margin: auto;
   grid-auto-rows: 70px;
-  width: 500px; 
   margin-top: 100px;
-  margin-left: 35%;
+  justify-items: center;
+  align-items: center;
 }
-.item{
-border: 2px green solid; 
+
+.card{
+  border: 2px green solid;
+  height: 100px;
+  width: 100px;
 }
+
 .bay{
   
 }
