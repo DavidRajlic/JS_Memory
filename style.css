@@ -1,6 +1,19 @@
-.button{
-  
+.header{
+  display: flex;
+  justify-content: center;
 }
-.borderadd {
-  border: 2px red solid;
+.position{
+  display: grid;
+  grid-template-columns:auto auto auto auto;
+  grid-gap: 1em;
+  grid-auto-rows: 70px;
+  width: 500px; 
+  margin-top: 100px;
+  margin-left: 35%;
+}
+.item{
+border: 2px green solid; 
+}
+.bay{
+  
 }
