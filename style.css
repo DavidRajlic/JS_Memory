@@ -19,13 +19,24 @@
   justify-items: center;
   align-items: center;
 }
+.position img{
+ 
+  height: 50px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
 
 .card{
   border: 2px green solid;
   height: 100px;
   width: 100px;
 }
-
-.bay{
+.card img{ 
+  height: 50px;
   
 }
+.red{
+  border: 2px red solid;
+}
+
