@@ -24,21 +24,26 @@ for (let i=0; i < cards.length; i++) {
     cards[i].classList.add('red');
     img[i].style.visibility =  "visible";
     
-      if (cardsClicked>=3) 
-      for (let i=0; i < cards.length; i++) {
-        cards[i].classList.remove('red');
-        img[i].style.visibility ='hidden';
-        cardsClicked=0;
-      }
-   
-   
+      if (cardsClicked===2) {
+        setTimeout(time, 500);
+        function time() {
+          for (let i=0; i < cards.length; i++) {
+            cards[i].classList.remove('red');
+            img[i].style.visibility ='hidden';
+            cardsClicked=0;
+        }; 
+       }
+       }
+      
+    });
+  };
      /* cards[i].classList.remove('red');
       img[i].style.visibility ='hidden';
       cardsClicked = 0;
     }*/
   
-  });
-};
+  
+
 /*for (let i=0; i < cards.length; i++) {
   cards[i].addEventListener('click', function (e) {
     cardsClicked++;
