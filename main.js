@@ -1,7 +1,6 @@
 const cards = Array.from(document.querySelectorAll('.card'));
 const img = Array.from(document.querySelectorAll('img'));
-
-
+const div = Array.from(document.querySelectorAll('div'));
 
 // cards on random positions
 const position = document.querySelector('.position');
@@ -18,43 +17,52 @@ for (let i=0; i<img.length; i++){
 
 // When card is clicked show image and border
 let cardsClicked = 0;
+
+let cardIndex = {
+  first: -1,
+  second: -1,
+};
+
 for (let i=0; i < cards.length; i++) {
   cards[i].addEventListener('click', function (e) {
-    cardsClicked++;
-    cards[i].classList.add('red');
-    img[i].style.visibility =  "visible";
+    // if card is already clicked, do nothing
+    // check if first card is already clicked
+    // if 2 cards are clicked and not a pair, disable clicks until setTimeout is done
+
     
-      if (cardsClicked===2) {
-        setTimeout(time, 500);
-        function time() {
-          for (let i=0; i < cards.length; i++) {
-            cards[i].classList.remove('red');
-            img[i].style.visibility ='hidden';
-            cardsClicked=0;
-        }; 
-       }
-       }
-      
-    });
-  };
-     /* cards[i].classList.remove('red');
-      img[i].style.visibility ='hidden';
-      cardsClicked = 0;
-    }*/
-  
+    // if first card is not clicked save first index
+    if ( cardIndex.first < 0) {
+     cardIndex.first = i;
+    } else {
+      cardIndex.second = i;
+    }
   
 
-/*for (let i=0; i < cards.length; i++) {
-  cards[i].addEventListener('click', function (e) {
     cardsClicked++;
-    if ( cardsClicked === 2) {
-      cards[i].classList.remove('red');
-      img[i].style.visibility ='hidden';
-      cardsClicked = 0;
-    } else {
+  
+    if (cardsClicked <= 2) {
       cards[i].classList.add('red');
-      img[i].style.visibility =  "visible";
-    } 
+      img[i].style.visibility = 'visible';
+    }
+    
+    if (cardsClicked === 2) {
+      setTimeout(function time () {
+        cards[cardIndex.first].classList.remove('red');
+        img[cardIndex.first].style.visibility =  "hidden";
+        cards[cardIndex.second].classList.remove('red');
+        img[cardIndex.second].style.visibility =  "hidden";
+
+        if (cardIndex.second >= 0) {
+          if (img[cardIndex.first].className === img[cardIndex.second].className) {
+            cards[cardIndex.first].style.visibility =  'hidden';
+            cards[cardIndex.second].style.visibility =  'hidden';
+          }
+        }
+
+        cardIndex.first = -1;
+        cardIndex.second = -1;
+        cardsClicked=0;
+      }, 700);
+    }
   });
 };
-*/
