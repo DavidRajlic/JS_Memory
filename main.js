@@ -1,6 +1,5 @@
 const cards = Array.from(document.querySelectorAll('.card'));
 const img = Array.from(document.querySelectorAll('img'));
-const div = Array.from(document.querySelectorAll('div'));
 
 // cards on random positions
 const position = document.querySelector('.position');
@@ -9,7 +8,6 @@ const position = document.querySelector('.position');
 for ( let i = position.children.length; i >= 0; i--) {
   position.appendChild(position.children[Math.random() * i | 0]);
 }
-
 //hide image visibility
 for (let i=0; i<img.length; i++){
   img[i].style.visibility = "hidden";
@@ -25,6 +23,7 @@ let cardIndex = {
 
 for (let i=0; i < cards.length; i++) {
   cards[i].addEventListener('click', function (e) {
+    cards[i].classList.add('white');
     if ( cardIndex.first < 0) {
      cardIndex.first = i;
     } else {
@@ -53,6 +52,9 @@ for (let i=0; i < cards.length; i++) {
       setTimeout(function time () {
         cards[cardIndex.first].classList.remove('red');
         cards[cardIndex.second].classList.remove('red');
+        cards[cardIndex.first].classList.remove('white');
+        cards[cardIndex.second].classList.remove('white');
+        
 
         img[cardIndex.first].style.visibility = 'hidden';
         img[cardIndex.second].style.visibility =  'hidden';
@@ -61,11 +63,12 @@ for (let i=0; i < cards.length; i++) {
           cards[cardIndex.first].style.visibility = 'hidden';
           cards[cardIndex.second].style.visibility = 'hidden';
         }
+        
         for (let j=0; j < cards.length; j++){
           cards[j].style.pointerEvents = 'auto';
          };
          
-         cards[cardIndex.second].style.pointerEvents = 'auto';
+         
         
         cardIndex.first = -1;
         cardIndex.second = -1;
