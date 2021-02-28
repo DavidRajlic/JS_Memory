@@ -14,7 +14,15 @@ for (let i=0; i<img.length; i++){
 };
 
 // When card is clicked show image and border
+let counter= 0;
 let cardsClicked = 0;
+
+const divCounter = document.querySelector('.counter');
+let p = document.createElement('p');
+
+p.innerHTML = `Mistakes: ${counter}`;
+
+divCounter.appendChild(p);
 
 let cardIndex = {
   first: -1,
@@ -29,7 +37,7 @@ for (let i=0; i < cards.length; i++) {
     } else {
       cardIndex.second = i;
     }
-
+    
     cardsClicked++;
 
     if( cardsClicked === 1){
@@ -63,13 +71,15 @@ for (let i=0; i < cards.length; i++) {
           cards[cardIndex.first].style.visibility = 'hidden';
           cards[cardIndex.second].style.visibility = 'hidden';
         }
-        
+        else{
+          counter++;
+          p.innerHTML = `Mistakes: ${counter}`;
+        }
+
         for (let j=0; j < cards.length; j++){
           cards[j].style.pointerEvents = 'auto';
          };
          
-         
-        
         cardIndex.first = -1;
         cardIndex.second = -1;
         
